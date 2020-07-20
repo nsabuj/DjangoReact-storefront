@@ -1,2 +1,6 @@
 export const CHANGE_SEARCH_SHOW = "CHANGE_SEARCH_SHOW";
 export const CHANGE_CART_SHOW = "CHANGE_CART_SHOW";
+export const AUTH_START = "AUTH_START";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH_FAIL = "AUTH_FAIL";
+export const AUTH_LOGOUT = "AUTH_LOGOUT";

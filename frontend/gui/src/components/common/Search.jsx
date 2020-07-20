@@ -54,7 +54,7 @@ const mapDispachToProps = (dispach) => {
 
 function mapStateToProps(state) {
     return {
-        showSearch:state.showSearch
+        showSearch:state.common.showSearch
     };
 }
 

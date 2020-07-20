@@ -64,7 +64,7 @@ class Header extends Component {
                                                 <li><NavLink className="mega__title" to="product-grid.html">Variable Product</NavLink> 
                                                     <ul className="mega__item">
                                                         <li><NavLink to="">Category</NavLink> </li>
-                                                        <li><NavLink to="">My Account</NavLink> </li>
+                                                        <li><NavLink to="/login">My Account</NavLink> </li>
                                                         <li><NavLink to="">Wishlist</NavLink> </li>
                                                         <li><NavLink to="">Shopping Cart</NavLink> </li>
                                                         <li><NavLink to="">Checkout</NavLink> </li>
@@ -100,7 +100,7 @@ class Header extends Component {
                                                 <li><NavLink className="mega__title" to="product-grid.html">Variable Product</NavLink> 
                                                     <ul className="mega__item">
                                                         <li><NavLink to="#">Category</NavLink> </li>
-                                                        <li><NavLink to="#">My Account</NavLink> </li>
+                                                        <li><NavLink to="/login">My Account</NavLink> </li>
                                                         <li><NavLink to="/wishlist">Wishlist</NavLink> </li>
                                                         <li><NavLink to="/cart">Shopping Cart</NavLink> </li>
                                                         <li><NavLink to="/checkout">Checkout</NavLink> </li>
@@ -199,8 +199,8 @@ const mapDispachToProps = (dispach) => {
 
 function mapStateToProps(state) {
     return {
-        showSearch: state.showSearch,
-        showCart:state.showCart
+        showSearch: state.common.showSearch,
+        showCart:state.common.showCart
     };
 }
 

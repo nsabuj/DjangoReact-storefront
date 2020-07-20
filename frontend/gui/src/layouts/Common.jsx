@@ -15,16 +15,17 @@ import Footer from '../components/footer/Footer';
 import MainRoute from '../routes/MainRoute';
 import Search from '../components/common/Search';
 import Cart from '../components/common/Cart';
+import history from '../history';
 class CommonLayout extends Component{
 
 
     render(){
-        console.log(this.props.showSearch);
+        
         return (
 
-            <Router>
+            <Router history={history} >
             {/* Body main wrapper start */}
-            <div className="wrapper">
+            <div className="wrapper" >
             <Header/>
             <div className="body__overlay"></div>
             {/* Start Offset Wrapper */}
@@ -34,7 +35,7 @@ class CommonLayout extends Component{
 
             </div>
             {/* End Offset Wrapper */}
-            <MainRoute/>
+            <MainRoute IsAuthenticated={this.props.IsAuthenticated}/>
 
             <Footer/>
             </div>
@@ -48,8 +49,9 @@ class CommonLayout extends Component{
 
 function mapStateToProps(state) {
     return {
-        showSearch: state.showSearch,
-        showCart:state.showCart
+        showSearch: state.common.showSearch,
+        showCart:state.common.showCart,
+        IsAuthenticated:state.auth.IsAuthenticated
     };
 }
 

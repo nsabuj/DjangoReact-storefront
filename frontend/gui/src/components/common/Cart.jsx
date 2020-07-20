@@ -75,7 +75,7 @@ const mapDispachToProps = (dispach) => {
 
 function mapStateToProps(state) {
     return {
-        showCart: state.showCart
+        showCart: state.common.showCart
     };
 }
 
