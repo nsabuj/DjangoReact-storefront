@@ -21,7 +21,7 @@ class Product(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='products')
 
 
     def __str__(self):
