@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export class MyAccount extends Component {
+export class MyAccount extends React.Component {
     render() {
         return (
             <div>
-                
+                hhhj
             </div>
         )
     }

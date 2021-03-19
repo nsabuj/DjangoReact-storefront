@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import * as Bootstrap from 'react-bootstrap';
 import './../assets/css/bootstrap.min.css';
 import './../assets/css/owl.carousel.min.css';

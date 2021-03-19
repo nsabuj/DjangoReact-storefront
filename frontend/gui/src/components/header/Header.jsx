@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {CHANGE_SEARCH_SHOW,CHANGE_CART_SHOW} from '../../Store/actions/ActionTypes';
+import { logout } from '../../Store/actions/Auth';
 class Header extends Component {
 
     constructor(props) {
@@ -63,7 +64,7 @@ class Header extends Component {
                                                 {/* Start Single Mega MEnu */}
                                                 <li><NavLink className="mega__title" to="product-grid.html">Variable Product</NavLink> 
                                                     <ul className="mega__item">
-                                                        <li><NavLink to="">Category</NavLink> </li>
+                                                        <li><NavLink to="/category">Category</NavLink> </li>
                                                         <li><NavLink to="/login">My Account</NavLink> </li>
                                                         <li><NavLink to="">Wishlist</NavLink> </li>
                                                         <li><NavLink to="">Shopping Cart</NavLink> </li>
@@ -175,6 +176,12 @@ class Header extends Component {
                                         <a className="cart__menu" href="#"><i className="icon-handbag icons" onClick={this.toggleCart}></i></a> 
                                         <NavLink to="#"><span className="htc__qua">2</span></NavLink> 
                                     </div>
+                                    {
+                                        this.props.IsLoggedIn?
+                                        <div className='header__account'><NavLink to='#' onClick={this.props.logout}>Logout</NavLink></div> :
+                                    ""
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -200,9 +207,10 @@ const mapDispachToProps = (dispach) => {
 function mapStateToProps(state) {
     return {
         showSearch: state.common.showSearch,
-        showCart:state.common.showCart
+        showCart:state.common.showCart,
+        IsLoggedIn: state.auth.token!==null
     };
 }
 
-export default connect(mapStateToProps, mapDispachToProps)(Header);
+export default connect(mapStateToProps, {mapDispachToProps,logout})(Header);
 

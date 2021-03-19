@@ -10,10 +10,8 @@ class App extends Component {
         this.props.onTryAutoSignup();
     }
     render() {
-        return ( < Fragment >
-            <
-            CommonLayout {...this.props }
-            />  </Fragment >
+        return ( <Fragment >
+            <CommonLayout {...this.props }/>  </Fragment >
         );
     }
 }

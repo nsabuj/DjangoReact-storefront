@@ -10,7 +10,7 @@ import LoginValidation from '../../validations/LogIn'
 class LoginForm extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             email: '',
             password: '',
@@ -24,11 +24,23 @@ class LoginForm extends React.Component {
         }
         
        
+
+       
+    }
+
+    componentDidMount(){
+        console.log(this.props.isAuthenticated);
         if(this.props.isAuthenticated){
            
             history.push('/my-account');
          } 
-       
+    }
+
+    componentDidUpdate(nextProps){
+       console.log(nextProps.isAuthenticated);
+        if(nextProps.isAuthenticated){
+            history.push('/my-account');
+        }
     }
 
 
@@ -41,24 +53,32 @@ class LoginForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({ isLoading : true });
     const rtn = LoginValidation(this.state);
     this.setState(rtn);
       if (rtn.isValid) {
         this.props.onAuth(this.state.email, this.state.password);
-        console.log(this.props.isAuthenticated);
-        if(this.props.isAuthenticated){
-            history.push('/my-account');
-        }
+      //  window.location.href = "/my-account";
+      console.log(this.state);
+      this.setState({isLoading : false});
+      console.log(this.state);
+      if(this.props.isAuthenticated){
+      this.timeout = setTimeout(() => {
+        
+      
+        history.push('/my-account');
+      }, 3000);
+    }
+            
+        
       }
     
   }
 
   render() {
 
-    if(this.props.isAuthenticated){
-           
-        history.push('/my-account');
-     }  
+
+   
     let errorMessage = null;
     if (this.props.error) {
         errorMessage = (
@@ -121,7 +141,7 @@ const mapStateToProps = (state) => {
     return {
         loading: state.auth.loading,
         error: state.auth.error,
-        isAuthenticated: state.auth.token!== null
+        isAuthenticated: state.auth.token!==null
     }
 }
 
